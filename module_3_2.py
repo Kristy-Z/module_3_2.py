@@ -4,9 +4,9 @@ def send_email(message, recipient, *, sender = 'university.help@gmail.com' ):
     r = recipient.endswith(tuple)
     s = sender.endswith(tuple)
 
-    if '@' in recipient and '@' in sender and r is True and s is True:
+    if '@' in recipient and '@' in sender:
         print(f'Письмо успешно отправлено с адреса {sender} на адрес {recipient}')
-    elif '@' not in recipient and '@' not in sender and r is False and s is False:
+    elif '@' not in recipient and '@' not in sender:
         print(f'Невозможно отправить письмо с адреса {sender} на адрес {recipient} ')
     elif recipient == sender:
         print("Нельзя отправить письмо самому себе!")
