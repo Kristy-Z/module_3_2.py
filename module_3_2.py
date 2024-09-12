@@ -4,17 +4,26 @@ def send_email(message, recipient, *, sender = 'university.help@gmail.com' ):
     r = recipient.endswith(tuple)
     s = sender.endswith(tuple)
 
-    if '@' in recipient and '@' in sender:
-        print(f'Письмо успешно отправлено с адреса {sender} на адрес {recipient}')
-    elif '@' not in recipient and '@' not in sender:
+    if '@' not in recipient or '@' not in sender or r is False or s is False:
         print(f'Невозможно отправить письмо с адреса {sender} на адрес {recipient} ')
-    elif recipient == sender:
+        return
+
+    if sender == "university.help@gmail.com":
+        print(f'Письмо успешно отправлено с адреса {sender} на адрес {recipient}')
+        return
+
+    if recipient == sender:
         print("Нельзя отправить письмо самому себе!")
+        return
+
     else:
         print(f'НЕСТАНДАРТНЫЙ ОТПРАВИТЕЛЬ! Письмо отправлено с адреса {sender} на адрес {recipient}.')
     return
 
-send_email('Привет!', 'kristy38rus@mail.ru', sender = 'university.help@gmail.com')
-send_email('Привет!', 'kristy38rus@mail.ru')
-send_email('Привет!', 'com.kristy38rus', sender = 'university.help@gmail.com')
-send_email('Привет!', 'university.help@gmail.com', sender = 'university.help@gmail.com')
+send_email('Пожалуйста, исправьте задание', 'urban.student@mail.ru', sender='urban.teacher@mail.uk')
+send_email('Это сообщение для проверки связи', 'vasyok1337@gmail.com')
+send_email('Напоминаю самому себе о вебинаре', 'urban.teacher@mail.ru', sender='urban.teacher@mail.ru')
+send_email('Вы видите это сообщение как лучший студент курса!', 'urban.fan@mail.ru', sender='urban.info@gmail.com')
+
+
+
